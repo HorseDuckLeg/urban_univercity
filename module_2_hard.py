@@ -18,30 +18,24 @@ def first_insert_fu():
     return first_insert
 
 
-n = first_insert_fu()
-#print('Число из первой вставки: ', n)
+n = first_insert_fu()   #забираем из функции случайное число из первой вставки
 pair_part_1 = []
 pair_part_2 = []
 password = []
-for c in range(1, n + 1):
+for c in range(1, n):   #разбиваем число из первой вставки на числовой ряд и наполняем список для перебора
     pair_part_1.append(c)
-    #print('pair_part_1', pair_part_1)
 for i in pair_part_1:
-    if i <= ((n / 2) + 1):
+    if i < ((n / 2) + 1):   #подбираем первое число из пары, доходя до середины числового ряда, что бы не делать лишних операций перебора
         for j in pair_part_1:
-            if j >= i:
+            if j > i:   #подбираем второе число из пары, идя от середины числового ряда, что бы не делать лишних операций перебора
                 if n % (i + j) == 0:
                     pair_part_2.append(i)
                     pair_part_2.append(j)
-                    #print('pair_part_2', pair_part_2)
-                else:
-                    #print('Сумма не кратна', n)
-                    continue
+
 
 print(n, ' - Число из первой вставки')
-#print('список для перебора от 1 до числа из первой вставки:', pair_part_1)
-#print('список пар сумма которых кратна числу из первой вставки:', pair_part_2)
-password = (pair_part_2)
-print(password)
+password = pair_part_2
+#print(password)
 result = "".join(str(i) for i in password)
 print('Нужный пароль:', result)
+
