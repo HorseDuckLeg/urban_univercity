@@ -40,4 +40,18 @@ def calculate_structure_sum(*data_structure):
 
 result = calculate_structure_sum(*data_structure)
 print(result)
-
+            if isinstance(i, dict):  # проверяем, является ли элемент словарём.
+                for key in i:
+                    key_value = i[key]  # получаем значение каждого ключа из словаря
+                    if isinstance(key, str):
+                        result += len(key)
+                    elif isinstance(key, int):
+                        result += key
+                    else:
+                        continue
+                    if isinstance(key_value, str):
+                        result += len(key_value)
+                    elif isinstance(key_value, int):
+                        result += key_value
+                    else:
+                        continue
